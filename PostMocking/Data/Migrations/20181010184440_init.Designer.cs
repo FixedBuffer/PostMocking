@@ -8,8 +8,8 @@ using PostMocking.Data;
 
 namespace PostMocking.Data.Migrations
 {
-    [DbContext(typeof(PostDbContext))]
-    [Migration("20181010182319_init")]
+    [DbContext(typeof(PostMockingDbContext))]
+    [Migration("20181010184440_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

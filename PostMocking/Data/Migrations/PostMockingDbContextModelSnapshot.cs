@@ -7,8 +7,8 @@ using PostMocking.Data;
 
 namespace PostMocking.Data.Migrations
 {
-    [DbContext(typeof(PostDbContext))]
-    partial class PostDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PostMockingDbContext))]
+    partial class PostMockingDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

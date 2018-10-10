@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace PostMocking.Data
 {
-    public partial class PostDbContext : DbContext
+    public partial class PostMockingDbContext : DbContext
     {
-        public PostDbContext()
+        public PostMockingDbContext()
         {
         }
 
-        public PostDbContext(DbContextOptions<PostDbContext> options)
+        public PostMockingDbContext(DbContextOptions<PostMockingDbContext> options)
             : base(options)
         {
         }
