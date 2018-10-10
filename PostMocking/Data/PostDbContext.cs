@@ -46,7 +46,7 @@ namespace PostMocking.Data
 
                 entity.Property(e => e.Nombre).HasColumnType("longtext");
 
-                entity.HasOne(d => d.IdCursoNavigation)
+                entity.HasOne(d => d.Curso)
                     .WithMany(p => p.Alumnos)
                     .HasForeignKey(d => d.IdCurso)
                     .HasConstraintName("FK_Alumnos_Cursos_IdCurso");
@@ -69,7 +69,7 @@ namespace PostMocking.Data
 
                 entity.Property(e => e.Nombre).HasColumnType("longtext");
 
-                entity.HasOne(d => d.IdProfesorNavigation)
+                entity.HasOne(d => d.Profesor)
                     .WithMany(p => p.Cursos)
                     .HasForeignKey(d => d.IdProfesor)
                     .HasConstraintName("FK_Cursos_Profesores_IdProfesor");

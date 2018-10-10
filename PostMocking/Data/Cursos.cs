@@ -15,7 +15,7 @@ namespace PostMocking.Data
         public string Ciudad { get; set; }
         public int IdProfesor { get; set; }
 
-        public Profesores IdProfesorNavigation { get; set; }
+        public Profesores Profesor { get; set; }
         public ICollection<Alumnos> Alumnos { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace PostMocking.Data
         public DateTime Nacimiento { get; set; }
         public int IdCurso { get; set; }
 
-        public Cursos IdCursoNavigation { get; set; }
+        public Cursos Curso { get; set; }
     }
 }
