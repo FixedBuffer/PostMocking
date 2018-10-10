@@ -24,7 +24,7 @@ namespace PostMocking.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("Server=localhost;Database=postefcore;Uid=root;Pwd=root;");
+                optionsBuilder.UseMySql("Server=localhost;Database=PostMocking;Uid=root;Pwd=root;");
             }
         }
     }
