@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PostMocking.Data
 {
@@ -9,7 +10,7 @@ namespace PostMocking.Data
         {
             Alumnos = new HashSet<Alumnos>();
         }
-
+        [Key]
         public int IdCurso { get; set; }
         public string Nombre { get; set; }
         public string Ciudad { get; set; }

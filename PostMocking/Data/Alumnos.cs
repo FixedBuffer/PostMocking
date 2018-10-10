@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PostMocking.Data
 {
     public partial class Alumnos
     {
+        [Key]
         public int IdAlumno { get; set; }
         public string Nombre { get; set; }
         public DateTime Nacimiento { get; set; }
