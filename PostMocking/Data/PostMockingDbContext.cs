@@ -15,9 +15,9 @@ namespace PostMocking.Data
         {
         }
 
-        public virtual DbSet<Alumnos> Alumnos { get; set; }
-        public virtual DbSet<Cursos> Cursos { get; set; }
-        public virtual DbSet<Profesores> Profesores { get; set; }
+        public virtual DbSet<Alumno> Alumnos { get; set; }
+        public virtual DbSet<Curso> Cursos { get; set; }
+        public virtual DbSet<Profesor> Profesores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

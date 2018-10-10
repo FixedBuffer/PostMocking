@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PostMocking.Data
 {
-    public partial class Cursos
+    public partial class Curso
     {
-        public Cursos()
+        public Curso()
         {
-            Alumnos = new HashSet<Alumnos>();
+            Alumnos = new HashSet<Alumno>();
         }
         [Key]
         public int IdCurso { get; set; }
@@ -16,7 +16,7 @@ namespace PostMocking.Data
         public string Ciudad { get; set; }
         public int IdProfesor { get; set; }
 
-        public Profesores Profesor { get; set; }
-        public ICollection<Alumnos> Alumnos { get; set; }
+        public Profesor Profesor { get; set; }
+        public ICollection<Alumno> Alumnos { get; set; }
     }
 }

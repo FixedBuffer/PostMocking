@@ -22,7 +22,10 @@ namespace PostMocking.Model
         public bool GenerarInforme(string NombreProfesor, string Email)
         {
             //Obtenemos mediante LinQ los datos del profesor
-            var Profesor = context.Profesores.Where(x => string.Compare(x.Nombre, NombreProfesor, true) == 0).Include(x => x.Cursos).ThenInclude(x => x.Alumnos).FirstOrDefault();
+            var Profesor = context.Profesores.Where(x => string.Compare(x.Nombre, NombreProfesor, true) == 0)
+                                                .Include(x => x.Cursos)
+                                                .ThenInclude(x => x.Alumnos)
+                                                .FirstOrDefault();
             //En casode no encontrar nada, salimos
             if (Profesor is null)
                 return false;

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PostMocking.Data
 {
-    public partial class Alumnos
+    public partial class Alumno
     {
         [Key]
         public int IdAlumno { get; set; }
@@ -12,6 +12,6 @@ namespace PostMocking.Data
         public DateTime Nacimiento { get; set; }
         public int IdCurso { get; set; }
 
-        public Cursos Curso { get; set; }
+        public Curso Curso { get; set; }
     }
 }
