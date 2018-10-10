@@ -1,12 +1,19 @@
-﻿using System;
+﻿using PostMocking.Data;
+using PostMocking.Model;
+using System;
 
 namespace PostMocking
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-      Console.WriteLine("Hello World!");
+        static void Main(string[] args)
+        {
+            using (PostMockingDbContext context = new PostMockingDbContext())
+            {
+                EmailSender emailSender = new EmailSender();
+                GeneradorInformes generador = new GeneradorInformes(context, emailSender);
+                generador.GenerarInforme("Andres Garde","jorge_turrado@hotmail.es");
+            }
+        }
     }
-  }
 }

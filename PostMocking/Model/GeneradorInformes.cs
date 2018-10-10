@@ -10,8 +10,9 @@ namespace PostMocking.Model
     public class GeneradorInformes
     {
         //Propiedad con la dependencia
-        public IEmailSender emailSender { get; set; }
-        public PostMockingDbContext context { get; set; }
+        private IEmailSender emailSender { get; set; }
+        private PostMockingDbContext context { get; set; }
+
         public GeneradorInformes(PostMockingDbContext context, IEmailSender emailSender)
         {
             this.context = context;
