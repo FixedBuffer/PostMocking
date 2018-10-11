@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostMocking.Data;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 

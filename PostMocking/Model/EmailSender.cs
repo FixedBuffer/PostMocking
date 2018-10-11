@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PostMocking.Model
+﻿namespace PostMocking.Model
 {
     public class EmailSender : IEmailSender
     {

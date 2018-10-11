@@ -12,7 +12,10 @@ namespace PostMocking
             {
                 EmailSender emailSender = new EmailSender();
                 GeneradorInformes generador = new GeneradorInformes(context, emailSender);
-                generador.GenerarInforme("FixedBuffer","jorge_turrado@hotmail.es");
+                if (generador.GenerarInforme("FixedBuffer", "jorge_turrado@hotmail.es"))
+                    Console.WriteLine("Informe enviado con exito");
+                else
+                    Console.WriteLine("Problema al enviar el informe");
             }
         }
     }
