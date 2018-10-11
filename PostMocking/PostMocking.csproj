@@ -7,11 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore" Version="2.1.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="pomelo.entityframeworkcore.mysql" Version="2.1.2" />
+    <PackageReference Include="pomelo.entityframeworkcore.mysql" Version="2.1.0" />
   </ItemGroup>
 
 </Project>
