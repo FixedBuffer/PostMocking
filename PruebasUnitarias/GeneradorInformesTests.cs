@@ -4,7 +4,6 @@ using Moq;
 using PostMocking.Data;
 using PostMocking.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,8 +12,11 @@ namespace PruebasUnitarias
     [TestClass]
     public class GeneradorInformesTests
     {
+        // Como queremos reutilizar los Mock, los declaramos a nivel de clase
         Mock<IEmailSender> emailSender;
         Mock<PostMockingDbContext> DbContext;
+
+        // Creamos los objetos de Mock en el constructor de la clase, para reutilizarlos
         public GeneradorInformesTests()
         {
             // Creamos el mock sobre nuestra interfazde envio de mensajes
@@ -27,7 +29,7 @@ namespace PruebasUnitarias
                            return true;
                        });
 
-
+            // Creamos la coleccion que devolverá nuestra base de datos Mockeada
             var profesor = new Profesor { Nombre = "Jorge Turrado", IdProfesor = 1 };
             var curso = new Curso { IdProfesor = profesor.IdProfesor, Ciudad = "Vitoria", Nombre = "Mocking", Profesor = profesor };
             var alumno = new Alumno { IdCurso = curso.IdCurso, Curso = curso, Nombre = "Andres Garcia" };
@@ -50,17 +52,19 @@ namespace PruebasUnitarias
             DbContext.Setup(c => c.Profesores).Returns(mockSet.Object);
         }
 
+        //Este Test generará el informe ya que el profesor existe
         [TestMethod]
         public void GenerarInformeValido()
         {
             // Creamos nuestra clase a testear y le pasamos los objetos mock
             GeneradorInformes generador = new GeneradorInformes(DbContext.Object, emailSender.Object);
-            var result = generador.GenerarInforme("Jorge Turrado","");
+            var result = generador.GenerarInforme("Jorge Turrado", "");
 
             //Comprobamos el resultado
-            Assert.AreEqual(true, result,"No se ha podido generar el informe");
+            Assert.AreEqual(true, result, "No se ha podido generar el informe");
         }
 
+        //Este Test NO generará el informe ya que el profesor NO existe
         [TestMethod]
         public void GenerarInformeInvalido()
         {
