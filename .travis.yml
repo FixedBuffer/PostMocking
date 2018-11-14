@@ -9,5 +9,6 @@ install:
 - dotnet restore
 script:
 - dotnet build
+- dotnet test PruebasUnitarias/PruebasUnitarias.csproj
 -notifications:
 -  email: false
