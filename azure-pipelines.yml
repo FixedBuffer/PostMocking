@@ -1,82 +1,116 @@
-# .NET Desktop
-# Build and run tests for .NET Desktop or Windows classic desktop solutions.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+# Lista de trabajos a realizar
 jobs:
-- job: Linux
+# Nombre del trabajo
+- job: Linux 
+
+  # Maquina que vamos a utilizar
   pool:
     vmImage: 'ubuntu-16.04'
-    
+
+  # Variables que queremos emplear, podriamos indicar aqui el nombre de la solucion, el target o la configuracion  
   variables:
     solution: '**/*.sln'
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
 
+  # Trabajos que se van a realizar
   steps:
+
+  # Instalar la herramienta Nuget
   - task: NuGetToolInstaller@0
 
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(solution)'
-
-  - script: dotnet build -c '$(buildConfiguration)'
-
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: test
-      projects: '**/PruebasUnitarias.csproj'
-      arguments: '--configuration $(buildConfiguration)'
-
-- job: MacOS
-  pool:
-    vmImage: 'macOS-10.13'
-  
-  variables:
-    solution: '**/*.sln'
-    buildPlatform: 'Any CPU'
-    buildConfiguration: 'Release'
-
-  steps:
-  - task: NuGetToolInstaller@0
-
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(solution)'
-
-  - script: dotnet build -c '$(buildConfiguration)'
-
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: test
-      projects: '**/PruebasUnitarias.csproj'
-      arguments: '--configuration $(buildConfiguration)'
-
-- job: Windows
-  pool:
-    vmImage: 'vs2017-win2016'
-
-  variables:
-    solution: '**/*.sln'
-    buildPlatform: 'Any CPU'
-    buildConfiguration: 'Release'
-
-  steps:
-  - task: NuGetToolInstaller@0
-
+  # Instalamos NetCore  a la version indicada
   - task: DotNetCoreInstaller@0
     inputs:
       version: '2.1.300'
 
+  # Hacer un "nuget restore"
   - task: NuGetCommand@2
     inputs:
       restoreSolution: '$(solution)'
 
+  # Compilar la solución
+  - script: dotnet build -c '$(buildConfiguration)'
+
+  # Ejecutar los test que se encuentran en el proyecto que le indicamos
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: test
+      projects: '**/PruebasUnitarias.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+# Nombre del trabajo
+- job: MacOS
+  pool:
+    # Maquina que vamos a utilizar
+    vmImage: 'macOS-10.13'
+
+  # Variables que queremos emplear, podriamos indicar aqui el nombre de la solucion, el target o la configuracion  
+  variables:
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+
+  # Trabajos que se van a realizar
+  steps:
+
+  # Instalar la herramienta Nuget
+  - task: NuGetToolInstaller@0
+
+  # Instalamos NetCore  a la version indicada
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '2.1.300'
+
+  # Hacer un "nuget restore"
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
+
+  # Compilar la solución
+  - script: dotnet build -c '$(buildConfiguration)'
+
+  # Ejecutar los test que se encuentran en el proyecto que le indicamos
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: test
+      projects: '**/PruebasUnitarias.csproj'
+      arguments: '--configuration $(buildConfiguration)'
+
+# Nombre del trabajo
+- job: Windows
+  pool:
+    # Maquina que vamos a utilizar
+    vmImage: 'vs2017-win2016'
+
+  # Variables que queremos emplear, podriamos indicar aqui el nombre de la solucion, el target o la configuracion  
+  variables:
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+  # Trabajos que se van a realizar
+  steps:
+
+  # Instalar la herramienta Nuget
+  - task: NuGetToolInstaller@0
+
+  # Instalamos NetCore  a la version indicada
+  - task: DotNetCoreInstaller@0
+    inputs:
+      version: '2.1.300'
+
+  # Hacer un "nuget restore"
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '$(solution)'
+
+  # Compilar la solución
   - task: VSBuild@1
     inputs:
       solution: '$(solution)'
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
 
+  # Ejecutar los test que se encuentran en el proyecto que le indicamos
   - task: DotNetCoreCLI@2
     inputs:
       command: test
